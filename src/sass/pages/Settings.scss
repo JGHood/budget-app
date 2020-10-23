@@ -1,0 +1,35 @@
+.settings {
+    color: $text-color;
+    padding-top: 5rem;
+
+    .settings-header {
+        padding-bottom: 3rem;
+    }
+
+    .settings-card {
+        background-color: $tuna;
+        display: inline-block;
+        padding: 1rem 0 1rem 0;
+        margin: 0 1rem 0 1rem;
+        transition: transform 0.3s;
+    }
+
+    .settings-card:hover {
+        transform: scale(1.08);
+    }
+
+    .icon-container {
+        text-align: center;
+    }
+
+    .card-container {
+        width:90%;
+        margin: 0 5%;
+        padding-bottom: 1rem;
+    }
+
+    .card-container-2 {
+        width:90%;
+        padding-bottom: 1rem;
+    }
+}

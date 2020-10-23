@@ -1,0 +1,31 @@
+body, html {
+    height: 100%;
+}
+//overwrites of default component themes
+@import './overwrites/DatePicker.scss';
+@import './overwrites/Switch.scss';
+@import './overwrites/Range.scss';
+
+
+//animations
+@import './components/animations.scss';
+
+
+//components
+@import './components/SidePanel.scss';
+@import './components/NavBar.scss';
+
+
+//pages
+@import './pages/PurchaseList.scss';
+@import './pages/PurchaseForm.scss';
+@import './pages/Settings.scss';
+@import './pages/Charts.scss';
+
+//app 
+.app-container {
+    background-color: $background-color;
+    height: 100vh;
+}
+
+

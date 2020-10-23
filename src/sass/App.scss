@@ -1,0 +1,11 @@
+
+.dark-theme {
+    @import './themes/dark-theme.scss';
+    @import './main.scss';
+}
+
+.light-theme {
+    @import './themes/light-theme.scss';
+    @import './main.scss';
+}
+

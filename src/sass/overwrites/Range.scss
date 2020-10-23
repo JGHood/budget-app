@@ -1,0 +1,15 @@
+.custom-range::-webkit-slider-runnable-track {
+    background-color: $quaternary;
+
+  }
+
+  .custom-range::-webkit-slider-thumb { 
+    background-color: $tertiary;
+    border-color: $text-color;
+    border-style: solid;
+    border-width: 1px;
+  }
+
+  .custom-range::-webkit-slider-thumb:active {
+    background-color: $tertiary;
+  }

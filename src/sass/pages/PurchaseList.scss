@@ -1,0 +1,32 @@
+.purchase-filters {
+    padding-top: 0.5rem;
+    padding-left: 1rem;
+    z-index: 5
+}
+
+.filter-toggle {
+    padding-top: 0.5rem;
+    padding-right: 1rem;
+}
+
+.purchase-list {
+    color: $text-color;
+
+    .form-control {
+        background-color: $background-color;
+        color: $text-color;
+    }
+
+    ::placeholder {
+        color: $text-color;
+    }
+
+    .clear {
+        color: $text-color;
+    }
+
+}
+
+.table {
+    color: $text-color;
+}

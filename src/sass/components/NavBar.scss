@@ -1,0 +1,48 @@
+.navbar {
+    background-color: $tuna;
+}
+
+.navbar-brand {
+    color: $text-color;
+}
+
+.navbar-navlink-item {
+    color: $text-color;
+    padding: 0.3rem 0.5rem 0rem 0.5rem;
+    margin-right: 0.5rem;
+    border-top-left-radius: 0.5rem;
+    border-top-right-radius: 0.5rem;
+    border-style: solid;
+    border-bottom: none;
+    font-size: 0.7rem;
+    transition: $link-color-transition, $text-grow;
+}
+
+.navbar-navlink-item:hover {
+    text-decoration: none;
+    color: $secondary;
+}
+
+.navbar-navlink-item-active {
+    color: $text-color;
+    border-color: $primary;
+    border-width: 0.2rem;
+    font-size: 1rem;
+}
+
+.modal-content {
+    color: green;
+    background-color: $tuna;
+    margin-top: 20rem;
+}
+
+.navbar-btn {
+    background-color: $quaternary;
+    border: none;
+    border-radius: 50%;
+    overflow: hidden;
+
+    .plus-icon {
+        overflow: hidden;
+    }
+}
