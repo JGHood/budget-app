@@ -1,10 +1,16 @@
 .charts {
     color: white;
-
+    width: 100%;
+}
+    .card-list {
+        display: flex;
+        width: 100%;
+    }
     .chart-card {
         background-color: $tuna;
         display: inline-block;
         padding: 1rem 0 1rem 0;
         
     }
-}
+
+    

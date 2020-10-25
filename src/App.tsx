@@ -5,6 +5,7 @@ import PurchaseList from './components/PurchaseList';
 import Settings from './components/Settings';
 import NavBar from './components/NavBar';
 import Charts from './components/Charts';
+import Charts2 from './components/Charts2';
 import {MemoryRouter, Route, Switch, useHistory } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import SidePanel from './components/SidePanel';
@@ -60,7 +61,7 @@ export default function App() {
                     <Route path="/form" exact component={PurchaseForm} />
                     <Route path="/list" component={PurchaseList} />
                     <Route path="/settings" component={Settings} />
-                    <Route path="/charts" component={Charts} />
+                    <Route path="/charts" component={Charts2} />
                   </Switch>
                 </div>
 

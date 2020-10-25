@@ -11,9 +11,13 @@ const db = new Store();
 export default function Charts(): JSX.Element {
 
     const pies = [{
-        pie: 'apple'
+        pie: 'apple',
+        width: 70
     },
-    { pie: 'cherry' }]
+    {
+        pie: 'cherry',
+        width: 20
+    }]
 
     const [pieOrder, setPieOrder] = useState(pies);
     const purchases = db.get('purchases');
@@ -46,7 +50,8 @@ export default function Charts(): JSX.Element {
     ];
 
     const handleOnDragEnd = (result) => {
-        if(!result.destination) return;
+        console.log(result);
+        if (!result.destination) return;
         const tempArray = Array.from(pieOrder);
         const [reorderedPies] = tempArray.splice(result.source.index, 1);
         tempArray.splice(result.destination.index, 0, reorderedPies);
@@ -55,54 +60,55 @@ export default function Charts(): JSX.Element {
 
     return (
         <div className="charts">
-            <DragDropContext onDragEnd={handleOnDragEnd}>
-                <Droppable droppableId="row-id-number-here">
-                    {(provided: DroppableProvided) =>
-                        <div {...provided.droppableProps} ref={provided.innerRef}>
-                            <ul>
-                                {
-                                    pieOrder.map((pie, index) => {
-                                        return (
-                                            <Draggable key={pie.pie} draggableId={pie.pie} index={index}>
-                                                {(provided) =>
-                                                    <div {...provided.draggableProps}
-                                                        {...provided.dragHandleProps}
-                                                        ref={provided.innerRef}>
-                                                        <Card className="chart-card" style={{ width: '100%' }}>
-                                                            <Card.Title>{pie.pie}</Card.Title>
-                                                            <Card.Body>
-                                                                <ResponsiveContainer width="100%" minHeight="15rem">
-                                                                    <LineChart
+                    <DragDropContext onDragEnd={handleOnDragEnd}>
 
-                                                                        data={data}
-                                                                        margin={{
-                                                                            top: 5, right: 30, left: 20, bottom: 5,
-                                                                        }}
-                                                                    >
-                                                                        <CartesianGrid strokeDasharray="3 3" />
-                                                                        <XAxis stroke="white" dataKey="name" />
-                                                                        <YAxis stroke="white" />
-                                                                        <Tooltip />
-                                                                        <Legend />
-                                                                        <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{ r: 8 }} />
-                                                                    </LineChart>
-                                                                </ResponsiveContainer>
-                                                            </Card.Body>
-                                                        </Card>
-                                                    </div>
-                                                }
-                                            </Draggable>
+                        <Droppable droppableId="row-id-number-here" direction="horizontal">
+                            {(provided: DroppableProvided) =>
+                                <div {...provided.droppableProps} ref={provided.innerRef}>
+                                    <ul className="card-list">
+                                        {
+                                            pieOrder.map((pie, index) => {
+                                                return (
+                                                    <Draggable key={pie.pie} draggableId={pie.pie} index={index}>
+                                                        {(provided) =>
+                                                            <div {...provided.draggableProps}
+                                                                {...provided.dragHandleProps}
+                                                                ref={provided.innerRef}>
+                                                                <Card className="chart-card" style={{ width: `${pie.width}vw` }}>
+                                                                    <Card.Title>{pie.pie}</Card.Title>
+                                                                    <Card.Body>
+                                                                        <ResponsiveContainer width="100%" minHeight="15rem">
+                                                                            <LineChart
 
-                                        )
-                                    })
-                                }
-                                {provided.placeholder}
-                            </ul>
-                        </div>
-                    }
+                                                                                data={data}
+                                                                                margin={{
+                                                                                    top: 5, right: 30, left: 20, bottom: 5,
+                                                                                }}
+                                                                            >
+                                                                                <CartesianGrid strokeDasharray="3 3" />
+                                                                                <XAxis stroke="white" dataKey="name" />
+                                                                                <YAxis stroke="white" />
+                                                                                <Tooltip />
+                                                                                <Legend />
+                                                                                <Line type="monotone" dataKey="pv" stroke="#8884d8" activeDot={{ r: 8 }} />
+                                                                            </LineChart>
+                                                                        </ResponsiveContainer>
+                                                                    </Card.Body>
+                                                                </Card>
+                                                            </div>
+                                                        }
+                                                    </Draggable>
 
-                </Droppable>
-            </DragDropContext>
-        </div>
+                                                )
+                                            })
+                                        }
+                                        {provided.placeholder}
+                                    </ul>
+                                </div>
+                            }
+                        </Droppable>
+
+                    </DragDropContext>
+                </div>
     );
 }
