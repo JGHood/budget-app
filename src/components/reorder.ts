@@ -1,11 +1,9 @@
 import { DraggableLocation } from "react-beautiful-dnd";
 
-import { ColorMap } from "./types";
-
 
 interface Component {
   id: number,
-  type: string,
+  type: JSX.Element,
   width: string
 }
 

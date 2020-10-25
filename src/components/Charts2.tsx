@@ -4,9 +4,8 @@ import { DragDropContext } from "react-beautiful-dnd";
 
 import { reorderComponents } from "./reorder";
 
-import { ColorMap } from "./types";
 
-import { Row } from "./Row";
+import { Row } from "./ChartRow";
 
 
 interface Component {
@@ -27,7 +26,7 @@ const App = () => {
             {
                 id: 1,
                 type: "Hello",
-                width: "30vw"
+                width: "45"
             }
         ],
 
@@ -35,7 +34,7 @@ const App = () => {
             {
                 id: 2,
                 type: "Test",
-                width: "30vw"
+                width: "30"
             }
         ],
 
@@ -43,58 +42,35 @@ const App = () => {
             {
                 id: 3,
                 type: "Yo",
-                width: "30vw"
+                width: "30"
             }
         ]
 
     });
 
-
-
     return (
 
         <DragDropContext
-
             onDragEnd={({ destination, source }) => {
-
                 // // dropped outside the list
-
                 if (!destination) {
-
                     return;
-
                 }
 
-
-
                 setRows(reorderComponents(rows, source, destination));
-
             }}
-
         >
 
             <div>
-
                 {Object.entries(rows).map(([rowId, components]) => (
-
                     <Row
-
                         listId={rowId}
-
                         components={components}
-
                     />
-
                 ))}
-
             </div>
-
         </DragDropContext>
-
     );
-
 };
-
-
 
 export default App;

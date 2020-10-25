@@ -1,5 +1,5 @@
 .charts {
-    color: white;
+    color: $text-color;
     width: 100%;
 }
     .card-list {
@@ -9,7 +9,12 @@
     .chart-card {
         background-color: $tuna;
         display: inline-block;
-        padding: 1rem 0 1rem 0;
+        color:  $text-color;
+
+        .card-title {
+            padding: 0;
+            margin: 0;
+        }
         
     }
 

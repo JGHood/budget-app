@@ -1,5 +1,4 @@
 body, html {
-    height: 100%;
 }
 //overwrites of default component themes
 @import './overwrites/DatePicker.scss';
@@ -25,7 +24,9 @@ body, html {
 //app 
 .app-container {
     background-color: $background-color;
-    height: 100vh;
+    height: auto;
+    min-height: 100vh;
+    width: auto;
 }
 
 
