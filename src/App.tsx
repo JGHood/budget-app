@@ -5,8 +5,7 @@ import PurchaseList from './components/PurchaseList';
 import Settings from './components/Settings';
 import NavBar from './components/NavBar';
 import Charts from './components/Charts';
-
-import {MemoryRouter, Route, Switch, useHistory } from 'react-router-dom';
+import {MemoryRouter, Route, Switch} from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import SidePanel from './components/SidePanel';
 const Store = window.require('electron-store');

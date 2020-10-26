@@ -1,6 +1,12 @@
-import React from 'react';
+import moment from 'moment';
+import React, { useEffect } from 'react';
 import { CartesianGrid, Legend, Line, LineChart, ResponsiveContainer, Tooltip, XAxis, YAxis } from 'recharts';
+import Purchase from './Purchase';
+const Store = window.require('electron-store');
 
+export const db = new Store();
+
+interface DateTotals { [key: string]: number };
 
 const data = [
     {
@@ -68,22 +74,57 @@ const data = [
     },
 ];
 
+
+const purchases: Purchase[] = db.get('purchases');
+console.log('purchases', purchases);
+
+/** Takes in past date and returns summed purchase total from past date through today */
+const dailySum = (date: Date) => {
+    let trackedDate = moment(date);
+    const dateList: DateTotals = [];
+    while (trackedDate <= moment()) {
+        dateList[trackedDate.format('MM/DD/YYYY')] = 0;
+        trackedDate = moment(trackedDate).add(1, 'days')
+
+    }
+
+    
+    let index = 0
+    Object.entries(dateList).map(([key, value]) => {
+        let dateSum = 0;
+        purchases.map((purchase) => {
+
+            if (moment(purchase.purchaseDate).format('MM/DD/YYYY') === key) {
+                if(purchase.cost) {
+                    dateSum = dateSum + eval(purchase.cost)
+                }
+                console.log(dateSum);
+            }
+        })
+        dateList[key] = dateSum;
+    }
+
+    )
+
+
+}
+
 export const LineGraph = () => {
+    useEffect(() => {
+        dailySum(new Date("10/1/2020"));
+    })
     return (
         <ResponsiveContainer width="100%" minHeight="10rem">
             <LineChart
 
                 data={data}
-                margin={{
-                    top: 5, right: 30, left: 20, bottom: 5,
-                }}
             >
                 <CartesianGrid strokeDasharray="4 4" />
                 <XAxis stroke="white" dataKey="name" />
                 <YAxis stroke="white" />
                 <Tooltip />
                 <Legend />
-                <Line type="monotone" dataKey="pv"  activeDot={{ r: 6 }} />
+                <Line type="monotone" dataKey="pv" activeDot={{ r: 6 }} />
             </LineChart>
         </ResponsiveContainer>
     )

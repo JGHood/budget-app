@@ -1,4 +1,4 @@
-import * as React from "react";
+import React from "react";
 
 import { DragDropContext } from "react-beautiful-dnd";
 
@@ -6,7 +6,7 @@ import { reorderComponents } from "./reorder";
 
 
 import { Row } from "./ChartRow";
-import {LineGraph} from './Graphs';
+import {LineGraph} from './Graphs2';
 
 interface Component {
     id: number,
@@ -29,23 +29,8 @@ const App = () => {
                 width: "45"
             }
         ],
-
-        b: [
-            {
-                id: 2,
-                type: <LineGraph/>,
-                width: "30"
-            }
-        ],
-
-        c: [
-            {
-                id: 3,
-                type: <LineGraph/>,
-                width: "30"
-            }
-        ]
-
+        b: [],
+        c: []
     });
     console.log(rows);
 
