@@ -36,7 +36,8 @@ const calculateDailySpend = (date: Date) => {
 
 const dailySpendLast31 = () => {
  const oneMonthAgo = moment().subtract(31, 'days');
- const dateList = db.get("daily-spend")
+ const dateList = db.get("daily-spend");
+ console.log(dateList);
 }
 
 const calculateMonthlySpend = (date: Date) => {
@@ -45,6 +46,7 @@ const calculateMonthlySpend = (date: Date) => {
 
 export const LineGraph = () => {
     const data = calculateDailySpend(new Date("9/1/2020"))
+    dailySpendLast31();
     return (
         <ResponsiveContainer width="100%" minHeight="10rem">
             <LineChart

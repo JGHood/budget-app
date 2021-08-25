@@ -2,7 +2,7 @@ export default interface Purchase {
     id: string,
     description: string | undefined,
     vendor: string | undefined,
-    purchaseDate: Date | undefined,
+    purchaseDate: Date,
     cost: number | undefined,
     category: string | undefined,
     subcategory: string | undefined,
